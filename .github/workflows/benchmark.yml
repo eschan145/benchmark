@@ -18,6 +18,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y g++
 
+    - name: Delete Previous Results
+      run: |
+        rm -f results.md
+        echo "Deleted previous results.md if it existed."
+
     - name: Initialize Results Markdown
       run: echo "# Benchmark Results\n\n| Optimization Level | Prime Computation (ms) | Insertion (ms) |\n|--------------------|-------------------------|----------------|\n" > results.md
 
@@ -26,7 +31,7 @@ jobs:
         OPT_LEVEL: O0
       run: |
         g++ -O0 benchmark.cpp -o benchmark_O0
-        ./benchmark_O0
+        OPT_LEVEL=O0 ./benchmark_O0
         echo "Completed benchmark for -O0"
         
         g++ -O2 benchmark.cpp -o benchmark_O2
@@ -35,22 +40,4 @@ jobs:
         
         g++ -O3 benchmark.cpp -o benchmark_O3
         OPT_LEVEL=O3 ./benchmark_O3
-        echo "Completed benchmark for -O3"
-        
-        g++ -Ofast benchmark.cpp -o benchmark_Ofast
-        OPT_LEVEL=Ofast ./benchmark_Ofast
-        echo "Completed benchmark for -Ofast"
-
-    - name: Run Python Benchmark
-      run: |
-        python3 benchmark.py
-
-    - name: Commit and Push Results
-      env:
-        GH_PAT: ${{ secrets.GH_PAT }}
-      run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
-        git add results.md
-        git commit -m "Add benchmark results for different optimizations [ci skip]" || echo "No changes to commit"
-        git push https://${GH_PAT}@github.com/${{ github.repository }} HEAD:main
+       
