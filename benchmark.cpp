@@ -39,12 +39,13 @@ int main() {
 
     // Append results to Markdown
     std::ofstream md_file("results.md", std::ios_base::app);
-    md_file << "| Optimization Level | Prime Computation (ms) | Insertion (ms) |\n";
-    md_file << "|--------------------|-------------------------|----------------|\n";
-    md_file << "| " << std::getenv("OPT_LEVEL") << "              | " << prime_duration << "              | " << insert_duration << "          |\n";
+    md_file << "| " << std::getenv("OPT_LEVEL") << "                | "
+            << prime_duration << "                     | "
+            << insert_duration << "                |\n";
     md_file.close();
 
     // Print results to console
+    std::cout << "Optimization Level: " << std::getenv("OPT_LEVEL") << "\n";
     std::cout << "Prime computation time: " << prime_duration << " ms\n";
     std::cout << "Insertion time: " << insert_duration << " ms\n";
 
