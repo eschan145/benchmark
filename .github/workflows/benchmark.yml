@@ -1,0 +1,38 @@
+name: Language Benchmark
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y g++
+
+    - name: Run C++ Benchmark
+      run: |
+        g++ -O3 benchmark.cpp -o benchmark
+        ./benchmark
+
+    - name: Run Python Benchmark
+      run: |
+        python3 benchmark.py
+
+    - name: Commit and Push Results
+      env:
+        GH_PAT: ${{ secrets.GH_PAT }}
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add results.md
+        git commit -m "Add benchmark results [ci skip]" || echo "No changes to commit"
+        git push https://${GH_PAT}@github.com/${{ github.repository }} HEAD:main
