@@ -1,17 +1,9 @@
 # Benchmark Results\n\n| Optimization Level | Prime Computation (ms) | Insertion (ms) |\n|--------------------|-------------------------|----------------|\n
-| Optimization Level | Prime Computation (ms) | Insertion (ms) |
-|--------------------|-------------------------|----------------|
-| O0              | 0.626265              | 0.18669          |
-| Optimization Level | Prime Computation (ms) | Insertion (ms) |
-|--------------------|-------------------------|----------------|
-| O2              | 0.273774              | 0.077275          |
-| Optimization Level | Prime Computation (ms) | Insertion (ms) |
-|--------------------|-------------------------|----------------|
-| O3              | 0.206698              | 0.085901          |
-| Optimization Level | Prime Computation (ms) | Insertion (ms) |
-|--------------------|-------------------------|----------------|
-| Ofast              | 0.198593              | 0.074871          |
+| O0                | 0.60767                     | 0.18112                |
+| O2                | 0.2822                     | 0.086562                |
+| O3                | 0.203231                     | 0.086773                |
+| Ofast                | 0.198432                     | 0.076423                |
 
 ## Python Results
-- Prime computation time: 5.55 ms
-- Insertion time: 0.69 ms
+- Prime computation time: 5.60 ms
+- Insertion time: 0.70 ms
