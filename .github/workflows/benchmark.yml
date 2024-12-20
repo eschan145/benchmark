@@ -24,7 +24,9 @@ jobs:
         echo "Deleted previous results.md if it existed."
 
     - name: Initialize Results Markdown
-      run: echo "| Optimization Level | Prime Computation (ms) | Insertion (ms) |\n|--------------------|-------------------------|----------------|\n" > results.md
+      run: |
+        echo "| Optimization Level | Prime Computation (ms) | Insertion (ms) |" >> results.md
+        echo "|--------------------|------------------------|----------------|" >> results.md
 
     - name: Run C++ Benchmarks with Optimization Levels
       env:
