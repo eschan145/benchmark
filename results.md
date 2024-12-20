@@ -1,9 +1,10 @@
-| Optimization Level | Prime Computation (ms) | Insertion (ms) |\n|--------------------|-------------------------|----------------|\n
-| O0 | 0.553583 | 0.170017 |
-| O2 | 0.274352 | 0.075762 |
-| O3 | 0.198591 | 0.079248 |
-| Ofast | 0.204852 | 0.083386 |
+| Optimization Level | Prime Computation (ms) | Insertion (ms) |
+|--------------------|------------------------|----------------|
+| O0 | 0.552768 | 0.164426 |
+| O2 | 0.27349 | 0.077956 |
+| O3 | 0.198571 | 0.076633 |
+| Ofast | 0.197919 | 0.074949 |
 
 ## Python Results
-- Prime computation time: 5.54 ms
-- Insertion time: 0.67 ms
+- Prime computation time: 5.57 ms
+- Insertion time: 0.69 ms
