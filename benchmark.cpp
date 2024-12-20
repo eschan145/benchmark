@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <chrono>
-#include <fstream>
 #include <cmath>
+#include <fstream>
 
 bool is_prime(int n) {
     if (n <= 1) return false;
@@ -37,12 +37,11 @@ int main() {
     auto end_insert = std::chrono::high_resolution_clock::now();
     auto insert_duration = std::chrono::duration<double, std::milli>(end_insert - start_insert).count();
 
-    // Write results to Markdown
-    std::ofstream md_file("results.md");
-    md_file << "# Benchmark Results\n\n";
-    md_file << "## C++ Results\n";
-    md_file << "- Prime computation time: " << prime_duration << " ms\n";
-    md_file << "- Insertion time: " << insert_duration << " ms\n";
+    // Append results to Markdown
+    std::ofstream md_file("results.md", std::ios_base::app);
+    md_file << "| Optimization Level | Prime Computation (ms) | Insertion (ms) |\n";
+    md_file << "|--------------------|-------------------------|----------------|\n";
+    md_file << "| " << std::getenv("OPT_LEVEL") << "              | " << prime_duration << "              | " << insert_duration << "          |\n";
     md_file.close();
 
     // Print results to console
